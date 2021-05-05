@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_063531) do
+ActiveRecord::Schema.define(version: 2021_05_05_072855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address"
+    t.integer "subject_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "addressable_type"
+    t.integer "addressable_id"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "name"
+    t.bigint "study_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_id"], name: "index_sites_on_study_id"
+  end
 
   create_table "studies", force: :cascade do |t|
     t.string "name", default: ""
@@ -23,6 +40,29 @@ ActiveRecord::Schema.define(version: 2021_05_04_063531) do
     t.string "symptoms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "specification"
+    t.integer "study_group_id"
   end
 
+  create_table "studies_subjects", force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "study_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "study_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "sites", "studies"
 end
