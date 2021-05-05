@@ -11,3 +11,8 @@ class CreateStudies < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+# Add validations on Study
+# age_limit > 7
+# drug should be present
+# phase can't be greater than 5

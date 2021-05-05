@@ -1,7 +1,9 @@
 # Study model
 class Study < ApplicationRecord
 
-  validates :name, presence: true
+  validates :name, :drug, presence: true
+  validates :age_limit, numericality: { greater_than: 7 }
+  validates :phase, numericality: { less_than: 5 }
 end
 
 
