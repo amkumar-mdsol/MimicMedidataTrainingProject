@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_05_05_072855) do
     t.string "symptoms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "specification"
     t.integer "study_group_id"
   end
 

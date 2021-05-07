@@ -8,11 +8,10 @@ class StudiesController < ApplicationController
 
     def create
         @study = Study.new(study_params)
-        
         if @study.save
-            render json: { notice: "Study created successfully!!"}
+            redirect_to studies_path
         else
-            render json: { error: "Could not create study!!"}
+            render :new
         end
     end
 
@@ -20,7 +19,17 @@ class StudiesController < ApplicationController
         puts "Index method called..."
         @studies = Study.all
 
-        render json: @studies
+        # render json: @studies
+    end
+
+    def new
+        @study ||= Study.new
+    end
+
+    def show
+    end
+
+    def edit
     end
 
     def update
@@ -33,6 +42,9 @@ class StudiesController < ApplicationController
         end
     end
 
+    def active
+    end
+
     private
 
     def demo_around_action
@@ -42,7 +54,7 @@ class StudiesController < ApplicationController
     end
 
     def study_params
-        params.require(:study).permit(:name, :age_limit, :drug, :phase, :study_group_id)
+        params.require(:study).permit(:name, :age_limit, :drug, :phase, :study_group_id, :symptoms)
     end
 end
 
