@@ -7,6 +7,7 @@ ruby '2.7.3'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'active_model_serializers'
 gem 'sidekiq'
+gem 'delayed_job_active_record'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
