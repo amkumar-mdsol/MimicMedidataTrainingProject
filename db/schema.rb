@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_072855) do
+ActiveRecord::Schema.define(version: 2021_05_10_054010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2021_05_05_072855) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "addressable_type"
     t.integer "addressable_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "study_id", null: false
+    t.bigint "subject_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_id"], name: "index_enrollments_on_study_id"
+    t.index ["subject_id"], name: "index_enrollments_on_subject_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -40,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_072855) do
     t.string "symptoms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "specification"
     t.integer "study_group_id"
   end
 
@@ -63,5 +73,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_072855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "enrollments", "studies"
+  add_foreign_key "enrollments", "subjects"
   add_foreign_key "sites", "studies"
 end

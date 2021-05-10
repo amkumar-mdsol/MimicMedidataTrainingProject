@@ -7,8 +7,28 @@ class Study < ApplicationRecord
 
   belongs_to :study_group
   has_many :sites
+
+  has_many :enrollments
+  has_many :subjects , through: :enrollments
+
   # now this association will enforce you to have the related object in the database. should not be nil or any non existing object.
 end
+
+
+# Scenario -> 
+
+# Subject enrolls to a study (whenever an enrollment is created) , we will put that in our file system. for eg a log
+
+# Study has_many subjects through Enrollment
+
+# STUDY   ENROLLMENT  SUBJECT
+
+# id 		study_id (1)
+# 		subject_id(2)    id
+
+# 		study_id(1)
+# 		subject_id(3)
+
 
 
 # model name is singular, and the relation name pertaining to it in the database

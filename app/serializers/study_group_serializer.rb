@@ -5,7 +5,6 @@ class StudyGroupSerializer < ActiveModel::Serializer
   attributes :studyGroup, :sites
   def studyGroup
   	object.name   #self => Serializer object, object => current json
-
   end
 
   def sites

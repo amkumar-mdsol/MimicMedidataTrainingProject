@@ -1,6 +1,7 @@
 class StudyGroup < ApplicationRecord
 	has_many :studies   #dynamically gives you these methods
 	has_many :sites, through: :studies 
+
 end
 
 
@@ -10,4 +11,3 @@ end
 
 
 # collection<<(object, ...)
-
