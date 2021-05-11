@@ -4,4 +4,7 @@
   <td><%= study.drug %></td>
   <td><%= study.phase %></td>
   <td><%= study.symptoms %></td>
+  <% if study.my_image.attached? %>
+  <td><%= image_tag study.my_image.variant(:thumb) %> </td>
+  <% end %>
 </tr>

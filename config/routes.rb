@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :study_groups do
-    resources :studies, only: [:index, :update, :create, :destroy]
-  end
+  # resources :study_groups do
+  #   resources :studies, only: [:index, :update, :create, :destroy]
+  # end
   post 'create_study', to: 'studies#create'
   get 'studies', to: 'studies#index'
   patch 'update_study/:id', to: 'studies#update'
 
   get 'active_studies', to: 'studies#active'
   # /active_studies => active action of studies controller
-  # resources :studies
+  resources :studies
+
+  resources :users
 
   #methods verbs that are bounded with routes
   #routes are actually url

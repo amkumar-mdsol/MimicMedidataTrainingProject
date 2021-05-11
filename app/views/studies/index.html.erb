@@ -9,9 +9,12 @@
         <th> Drug </th>
         <th> Phase </th>
         <th> Symptoms </th>
+        <th> Image </th>
       </tr>
-      <% @studies.each do |study| %>
-        <%= render partial: 'study', locals: { study: study } %> 
+      <% cache @studies do %>
+        <% @studies.each do |study| %>
+          <%= render partial: 'study', locals: { study: study } %>
+        <% end %>
       <% end %>
     </tbody>
   </table>

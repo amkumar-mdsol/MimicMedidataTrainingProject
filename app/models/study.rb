@@ -5,12 +5,15 @@ class Study < ApplicationRecord
   validates :age_limit, numericality: { greater_than: 7 }
   validates :phase, numericality: { less_than: 5 }
 
-  belongs_to :study_group
+  # belongs_to :study_group
   has_many :sites
 
   has_many :enrollments
   has_many :subjects , through: :enrollments
 
+  has_one_attached :my_image do |attachable|
+    attachable.variant :thumb, resize: "100x100"
+  end
   # now this association will enforce you to have the related object in the database. should not be nil or any non existing object.
 end
 
