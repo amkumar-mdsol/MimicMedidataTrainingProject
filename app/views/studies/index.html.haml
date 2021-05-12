@@ -1,0 +1,16 @@
+%h1
+  Studies #{link_to 'Add Study', new_study_path}
+%a
+%div{:style => "border: 1px solid;"}
+  %table
+    %tbody
+      %tr
+        %th Name
+        %th Age Limit
+        %th Drug
+        %th Phase
+        %th Symptoms
+        %th Image
+      - cache @studies do
+        - @studies.each do |study|
+          = render partial: 'study', locals: { study: study }

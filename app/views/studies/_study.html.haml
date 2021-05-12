@@ -1,0 +1,14 @@
+%tr
+  %td
+    = study.name
+  %td
+    = study.age_limit
+  %td
+    = study.drug
+  %td
+    = study.phase
+  %td
+    = study.symptoms
+  - if study.my_image.attached?
+    %td
+      = link_to 'Download File', rails_blob_path(study.my_image, disposition: 'attachment')

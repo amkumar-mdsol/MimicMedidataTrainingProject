@@ -10,6 +10,7 @@ gem 'sidekiq'
 gem "delayed_job"
 gem 'delayed_job_active_record'
 gem 'image_processing', '~> 1.2'
+gem "haml-rails", "~> 2.0"
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -32,6 +33,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'faker'
 
 group :development, :test do
   gem 'pry'

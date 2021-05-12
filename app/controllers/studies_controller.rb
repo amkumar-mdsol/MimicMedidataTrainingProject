@@ -9,9 +9,7 @@ class StudiesController < ApplicationController
     def create
         @study = Study.new(study_params)
         if @study.save
-
             StudyMailer.with( study: @study ).success_email.deliver_later
-
             redirect_to studies_path
         else
             render :new
