@@ -1,11 +1,11 @@
 # Study model
 class Study < ApplicationRecord
-
   validates :name, :drug, presence: true
   validates :age_limit, numericality: { greater_than: 7 }
   validates :phase, numericality: { less_than: 5 }
+  after_save :send_email
 
-  # belongs_to :study_group
+  belongs_to :study_group, optional: true
   has_many :sites
 
   has_many :enrollments
@@ -14,7 +14,19 @@ class Study < ApplicationRecord
   has_one_attached :my_image do |attachable|
     attachable.variant :thumb, resize: "100x100"
   end
-  # now this association will enforce you to have the related object in the database. should not be nil or any non existing object.
+
+  # scope :usable_drugs, -> { where("phase >= 4") }
+  scope :under_trials, -> { where("phase < 4") }
+
+  def self.usable_drugs
+    where("phase >= 4")
+  end
+
+  private
+
+  def send_email
+    StudyMailer.with( study: @study ).success_email.deliver_later
+  end
 end
 
 

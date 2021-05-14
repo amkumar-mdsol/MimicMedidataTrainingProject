@@ -1,15 +1,9 @@
 class StudiesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
-    # before_action :verify_authenticity_token
-
-    # after_action :demo_after_action, only: [:index]
-    # around_action :demo_around_action
-
     def create
         @study = Study.new(study_params)
         if @study.save
-            StudyMailer.with( study: @study ).success_email.deliver_later
             redirect_to studies_path
         else
             render :new
@@ -59,5 +53,3 @@ class StudiesController < ApplicationController
         params.require(:study).permit(:name, :age_limit, :drug, :phase, :study_group_id, :symptoms, :my_image)
     end
 end
-
-#CRUD -- create read update destroy

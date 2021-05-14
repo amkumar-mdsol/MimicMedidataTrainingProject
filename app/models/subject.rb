@@ -5,5 +5,5 @@ class Subject < ApplicationRecord
 	validates :blood_group, presence: true, inclusion: { in: ['b+', 'a+', 'b-', 'o-'] }
 	
 	has_many :enrollments
-  	has_many :studies , through: :enrollments
+  has_many :studies , through: :enrollments
 end

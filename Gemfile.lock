@@ -84,6 +84,11 @@ GEM
     diff-lcs (1.4.4)
     erubi (1.10.0)
     erubis (2.7.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (2.17.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.0)
@@ -255,6 +260,7 @@ DEPENDENCIES
   byebug
   delayed_job
   delayed_job_active_record
+  factory_bot_rails
   faker
   haml-rails (~> 2.0)
   image_processing (~> 1.2)
