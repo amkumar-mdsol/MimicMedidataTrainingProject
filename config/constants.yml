@@ -1,0 +1,5 @@
+development:
+  SUBJECT_SERVICE_URL: 'http://localhost:3001'  
+
+test:
+  SUBJECT_SERVICE_URL: 'http://localhost:3001'
